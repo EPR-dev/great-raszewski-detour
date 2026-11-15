@@ -4,10 +4,13 @@ import L from "leaflet";
 import "leaflet.markercluster";
 import type { LatLng, Place } from "../types";
 import { categoryClass, categorySvg } from "../lib/categories";
-import { flySeconds } from "../lib/motion";
+import { flySeconds, prefersReducedMotion } from "../lib/motion";
 import { tileConfig } from "../lib/tiles";
 
-type DetourMarkerOptions = L.MarkerOptions & { detourStatus?: Place["status"] };
+type DetourMarkerOptions = L.MarkerOptions & {
+  detourStatus?: Place["status"];
+  detourNext?: boolean;
+};
 
 const AUSTRALIA: L.LatLngBoundsExpression = [
   [-44.0, 112.8],
@@ -21,14 +24,38 @@ function placeIcon(place: Place, selected: boolean): L.DivIcon {
   const selectedClass = selected ? " is-selected" : "";
   const flag = place.nextUp ? `<span class="next-flag">Next</span>` : "";
   const pin = been
-    ? `<div class="pin pin-been ${cat}${selectedClass}" data-category="${place.category ?? ""}">${glyph}<span class="pin-tick">✓</span></div>`
+    ? `<div class="pin pin-been ${cat}${selectedClass}" data-category="${place.category ?? ""}"><span class="pin-glyph">${glyph}</span><span class="pin-tick">✓</span></div>`
     : `<div class="pin pin-want ${cat}${selectedClass}" data-category="${place.category ?? ""}"><span class="pin-glyph">${glyph}</span></div>`;
   return L.divIcon({
     className: "pin-wrap",
-    html: `<div class="pin-stack${place.nextUp ? " is-next" : ""}" data-next="${place.nextUp ? "1" : "0"}">${pin}${flag}</div>`,
-    iconSize: been ? [52, 52] : [52, 58],
-    iconAnchor: been ? [26, 26] : [26, 52],
-    tooltipAnchor: [0, been ? -28 : -48],
+    html: `<div class="pin-stack${place.nextUp ? " is-next" : ""}${been ? " is-been" : ""}" data-next="${place.nextUp ? "1" : "0"}">${pin}${flag}</div>`,
+    iconSize: been ? [64, 64] : [52, 58],
+    iconAnchor: been ? [32, 32] : [26, 52],
+    tooltipAnchor: [0, been ? -42 : -48],
+  });
+}
+
+function clusterIcon(been: number, want: number, next: number): L.DivIcon {
+  const tone = been === 0 ? "want" : want === 0 ? "been" : "mixed";
+  const size = tone === "want" ? 46 : tone === "been" ? 64 : 72;
+  const nextFlag = next > 0 ? `<span class="next-flag">Next</span>` : "";
+  const inner =
+    tone === "been"
+      ? `<span class="cluster-been">${been}<i>✓</i></span>`
+      : tone === "mixed"
+        ? `<span class="cluster-been">${been}<i>✓</i></span><span class="cluster-rest"><b>${want}</b></span>`
+        : `<span class="cluster-count">${want}</span>`;
+  const label =
+    tone === "want"
+      ? `${want} detours${next ? ", next up inside" : ""}`
+      : tone === "mixed"
+        ? `${been} been there, ${want} still on the list${next ? ", next up inside" : ""}`
+        : `${been} been there${next ? ", next up inside" : ""}`;
+  return L.divIcon({
+    className: `pin-cluster tone-${tone}`,
+    html: `<span class="cluster-face" role="img" aria-label="${label}">${inner}${nextFlag}</span>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
   });
 }
 
@@ -131,39 +158,46 @@ function DetourLayer({
   const map = useMap();
 
   useEffect(() => {
+    const calm = prefersReducedMotion();
     const group = L.markerClusterGroup({
       showCoverageOnHover: false,
       spiderfyOnMaxZoom: true,
       zoomToBoundsOnClick: true,
       maxClusterRadius: 48,
       disableClusteringAtZoom: 11,
-      spiderfyDistanceMultiplier: 1.4,
+      spiderfyDistanceMultiplier: 1.75,
+      animate: !calm,
+      animateAddingMarkers: !calm,
       iconCreateFunction(cluster) {
         const markers = cluster.getAllChildMarkers();
         let been = 0;
         let want = 0;
+        let next = 0;
         for (const marker of markers) {
-          const status = (marker.options as DetourMarkerOptions).detourStatus;
-          if (status === "been") been += 1;
+          const options = marker.options as DetourMarkerOptions;
+          if (options.detourStatus === "been") been += 1;
           else want += 1;
+          if (options.detourNext) next += 1;
         }
-        const tone = been === 0 ? "want" : want === 0 ? "been" : "mixed";
-        return L.divIcon({
-          className: `pin-cluster tone-${tone}`,
-          html: `<span>${cluster.getChildCount()}</span>`,
-          iconSize: [46, 46],
-          iconAnchor: [23, 23],
-        });
+        const icon = clusterIcon(been, want, next);
+        // Lift visited bunches above unvisited ones. The offset is added to
+        // the marker's screen position, so nearby golden signs cannot cover a stamp.
+        cluster.options.zIndexOffset = been > 0 ? 3000 : next > 0 ? 4500 : 0;
+        return icon;
       },
     });
 
     for (const place of places) {
+      const been = place.status === "been";
       const selected = place.id === selectedId;
       const marker = L.marker([place.lat, place.lng], {
         icon: placeIcon(place, selected),
-        title: `${place.name}${place.category ? ` · ${place.category}` : ""}${place.nextUp ? " · Next up" : ""}`,
-        zIndexOffset: selected ? 600 : 0,
+        title: [place.name, place.category, been ? "Been there" : "", place.nextUp ? "Next up" : ""]
+          .filter(Boolean)
+          .join(" · "),
+        zIndexOffset: selected ? 9000 : place.nextUp ? 6000 : been ? 3000 : 0,
         detourStatus: place.status,
+        detourNext: place.nextUp,
       } as DetourMarkerOptions);
       marker.on("click", () => onSelect(place.id));
       group.addLayer(marker);
@@ -172,7 +206,7 @@ function DetourLayer({
     map.addLayer(group);
     let draftMarker: L.Marker | null = null;
     if (draft) {
-      draftMarker = L.marker([draft.lat, draft.lng], { icon: draftIcon(), zIndexOffset: 800 });
+      draftMarker = L.marker([draft.lat, draft.lng], { icon: draftIcon(), zIndexOffset: 12000 });
       map.addLayer(draftMarker);
     }
     return () => {
@@ -210,6 +244,7 @@ export function MapView({
   onRobertson: () => void;
 }) {
   const tiles = tileConfig();
+  const calm = prefersReducedMotion();
   return (
     <div className={`map-wrap${pickArmed ? " is-picking" : ""}`}>
       <MapContainer
@@ -218,6 +253,9 @@ export function MapView({
         minZoom={3}
         maxZoom={18}
         zoomControl={false}
+        zoomAnimation={!calm}
+        fadeAnimation={!calm}
+        markerZoomAnimation={!calm}
         maxBounds={[
           [-48, 104],
           [-8, 164],
