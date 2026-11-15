@@ -15,6 +15,15 @@
   --sign: "Lilita One", "Arial Black", system-ui, sans-serif;
   --body: "Nunito", "Segoe UI", sans-serif;
   --card-face: "Fraunces", Georgia, serif;
+  --parchment:
+    radial-gradient(ellipse at 8% 0%, rgba(157, 59, 50, 0.09), transparent 36%),
+    radial-gradient(ellipse at 92% 100%, rgba(31, 110, 104, 0.08), transparent 42%),
+    radial-gradient(ellipse at 70% 18%, rgba(226, 165, 26, 0.07), transparent 28%),
+    repeating-linear-gradient(0deg, rgba(42, 33, 28, 0.035) 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(90deg, rgba(90, 60, 30, 0.025) 0 1px, transparent 1px 5px);
+  --route: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'><path d='M0 16C30 4 50 22 80 12s50-8 80 2' fill='none' stroke='%232a211c' stroke-width='1.6' stroke-dasharray='4 5' stroke-linecap='round'/></svg>");
+  --compass: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><circle cx='40' cy='40' r='34' fill='%23f3ead7' stroke='%23144e4a' stroke-width='3'/><circle cx='40' cy='40' r='23' fill='none' stroke='%239d3b32' stroke-width='1.4' stroke-dasharray='2 2'/><path d='M40 9l7 31-7-6-7 6z' fill='%23e2a51a'/><path d='M40 71l-7-31 7 6 7-6z' fill='%239d3b32'/><circle cx='40' cy='40' r='3.2' fill='%23144e4a'/></svg>");
+  --wagon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 110'><rect x='18' y='48' width='168' height='36' rx='10' fill='%231f6e68'/><path d='M48 48 72 24h78l22 24' fill='%23144e4a'/><rect x='78' y='28' width='34' height='18' rx='3' fill='%23f4ecdc'/><rect x='118' y='28' width='32' height='18' rx='3' fill='%23f4ecdc'/><rect x='168' y='52' width='16' height='22' rx='3' fill='%239d3b32'/><circle cx='64' cy='86' r='14' fill='%232a211c'/><circle cx='64' cy='86' r='6' fill='%23e2a51a'/><circle cx='158' cy='86' r='14' fill='%232a211c'/><circle cx='158' cy='86' r='6' fill='%23e2a51a'/><rect x='86' y='14' width='46' height='8' rx='2' fill='%239d3b32'/></svg>");
   color: var(--ink);
   font-family: var(--body);
   background: var(--paper);
@@ -28,9 +37,8 @@ html, body, #root {
 }
 
 body {
-  background-color: var(--paper);
-  background-image: radial-gradient(rgba(90, 60, 30, 0.045) 0.7px, transparent 0.7px);
-  background-size: 7px 7px;
+  background-color: #efe2c8;
+  background-image: var(--parchment);
   color: var(--ink);
 }
 
@@ -48,9 +56,11 @@ button { cursor: pointer; }
   display: flex;
   flex-direction: column;
   min-height: 0;
+  background-color: transparent;
 }
 
 .demo-banner {
+  position: relative;
   margin: 0;
   padding: 4px 12px;
   background: var(--mustard);
@@ -61,16 +71,48 @@ button { cursor: pointer; }
   letter-spacing: 0.01em;
 }
 
+.demo-banner::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  width: 34px;
+  height: 18px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: var(--wagon) center / contain no-repeat;
+  opacity: 0.9;
+}
+
 .top {
   position: relative;
   z-index: 20;
   flex: none;
   padding: 6px 10px;
-  background: rgba(243, 234, 215, 0.96);
+  background-color: rgba(243, 234, 215, 0.9);
+  background-image: var(--parchment);
   border-bottom: 1px solid var(--line);
 }
 
+.top::before,
+.top::after { z-index: 0; }
+
+.top::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 1px;
+  height: 12px;
+  pointer-events: none;
+  background: var(--route) left center / 150px 12px repeat-x;
+  opacity: 0.38;
+  animation: ink-route 22s linear infinite;
+}
+
 .top-bar {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -370,16 +412,34 @@ button { cursor: pointer; }
 }
 
 .action-bar {
+  position: relative;
   flex: none;
   display: flex;
   justify-content: center;
   padding: 6px 12px calc(6px + env(safe-area-inset-bottom));
-  background: rgba(243, 234, 215, 0.98);
+  background-color: rgba(243, 234, 215, 0.94);
+  background-image: var(--parchment);
   border-top: 3px solid var(--mustard-deep);
   z-index: 25;
 }
 
+.action-bar::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  top: 50%;
+  height: 14px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  background: var(--route) center / 150px 14px repeat-x;
+  opacity: 0.35;
+  animation: ink-route 26s linear infinite reverse;
+}
+
 .action-bar .add-button {
+  position: relative;
+  z-index: 1;
   flex: none;
   width: min(420px, 100%);
   min-height: 48px;
@@ -462,8 +522,13 @@ button { cursor: pointer; }
 .leaflet-container {
   height: 100%;
   width: 100%;
-  background: #d5e0cf;
+  background-color: #e6d3ae;
+  background-image: var(--parchment);
   font-family: var(--body);
+}
+
+.leaflet-tile {
+  filter: sepia(0.22) saturate(0.78) contrast(0.96) brightness(1.03);
 }
 
 .leaflet-control-zoom a {
@@ -647,7 +712,8 @@ button { cursor: pointer; }
   z-index: 4;
   min-height: 0;
   overflow: auto;
-  background: var(--paper);
+  background-color: rgba(239, 226, 200, 0.96);
+  background-image: var(--parchment);
   border-top: 4px solid var(--teal-deep);
   border-radius: 18px 18px 0 0;
   box-shadow: 0 -10px 28px rgba(40, 24, 10, 0.12);
@@ -1066,6 +1132,18 @@ button { cursor: pointer; }
 }
 
 @media (min-width: 960px) {
+  .action-bar::after {
+    content: "";
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    width: 48px;
+    height: 48px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    z-index: 0;
+    background: var(--compass) center / contain no-repeat;
+  }
   .stage { flex-direction: row; }
   .filter-drawer {
     right: auto;
@@ -1085,7 +1163,14 @@ button { cursor: pointer; }
   .toasts { left: 24px; right: 304px; bottom: 24px; }
 }
 
+@keyframes ink-route {
+  from { background-position: 0 center; }
+  to { background-position: 150px center; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .been-stamp.is-fresh { animation: none; }
   .pin-want { transition: none; }
+  .top::after,
+  .action-bar::before { animation: none; }
 }
