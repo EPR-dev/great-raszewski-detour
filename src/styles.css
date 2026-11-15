@@ -71,19 +71,6 @@ button { cursor: pointer; }
   letter-spacing: 0.01em;
 }
 
-.demo-banner::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 50%;
-  width: 34px;
-  height: 18px;
-  transform: translateY(-50%);
-  pointer-events: none;
-  background: var(--wagon) center / contain no-repeat;
-  opacity: 0.9;
-}
-
 .top {
   position: relative;
   z-index: 20;
@@ -97,7 +84,7 @@ button { cursor: pointer; }
 .top::before,
 .top::after { z-index: 0; }
 
-.top::after {
+.top::before {
   content: "";
   position: absolute;
   left: 10px;
@@ -106,8 +93,19 @@ button { cursor: pointer; }
   height: 12px;
   pointer-events: none;
   background: var(--route) left center / 150px 12px repeat-x;
-  opacity: 0.38;
+  opacity: 0.45;
   animation: ink-route 22s linear infinite;
+}
+
+.top::after {
+  content: "";
+  position: absolute;
+  bottom: 1px;
+  width: 28px;
+  height: 14px;
+  pointer-events: none;
+  background: var(--wagon) center / contain no-repeat;
+  animation: wagon-trip 16s ease-in-out infinite;
 }
 
 .top-bar {
@@ -145,7 +143,14 @@ button { cursor: pointer; }
 .motel-sign span:last-child { color: #fff4d2; }
 
 .tagline {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: fit-content;
   margin: 3px 0 0;
+  padding: 0 4px;
+  background: #f3ead7;
+  border-radius: 4px;
   font-family: var(--card-face);
   font-style: italic;
   font-size: 0.82rem;
@@ -1168,9 +1173,25 @@ button { cursor: pointer; }
   to { background-position: 150px center; }
 }
 
+@keyframes wagon-trip {
+  0% { left: -36px; transform: translateY(0); }
+  18% { left: 18%; transform: translateY(0); }
+  22% { left: 20%; transform: translateY(-2px); }
+  26% { left: 22%; transform: translateY(0); }
+  48% { left: 46%; transform: translateY(0); }
+  52% { left: 48%; transform: translateY(-2px); }
+  56% { left: 50%; transform: translateY(0); }
+  78% { left: 72%; transform: translateY(0); }
+  82% { left: 74%; transform: translateY(-2px); }
+  86% { left: 76%; transform: translateY(0); }
+  100% { left: calc(100% + 8px); transform: translateY(0); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .been-stamp.is-fresh { animation: none; }
   .pin-want { transition: none; }
+  .top::before,
   .top::after,
   .action-bar::before { animation: none; }
+  .top::after { left: 12px; transform: none; }
 }
