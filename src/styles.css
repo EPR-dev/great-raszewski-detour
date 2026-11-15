@@ -166,7 +166,7 @@ button { cursor: pointer; }
   text-align: center;
 }
 
-.view-toggle { flex: 0 1 210px; }
+.list-toggle { flex: 0 0 auto; }
 
 .filter-drawer {
   position: absolute;
@@ -327,8 +327,9 @@ button { cursor: pointer; }
   gap: 5px;
   min-height: 36px;
   padding: 0 10px;
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: var(--type, var(--card));
+  color: var(--type-ink, var(--ink));
+  border: 2px solid color-mix(in srgb, var(--type, var(--line)) 72%, var(--ink));
   border-radius: 999px;
   font-size: 0.75rem;
   font-weight: 800;
@@ -336,9 +337,10 @@ button { cursor: pointer; }
 }
 
 .type-filter[aria-pressed="true"] {
-  background: var(--teal);
-  color: #fffaf2;
-  border-color: var(--teal-deep);
+  background: var(--type, var(--teal));
+  color: var(--type-ink, #fffaf2);
+  border-color: var(--ink);
+  box-shadow: 0 0 0 2px var(--ink);
 }
 
 .legend svg, .type-mark svg { width: 16px; height: 16px; display: block; }
@@ -573,12 +575,12 @@ button { cursor: pointer; }
 }
 
 .pin-want {
-  background: var(--mustard);
-  color: var(--teal-deep);
-  border: 3px solid var(--teal-deep);
+  background: var(--type, var(--mustard));
+  color: var(--type-ink, var(--teal-deep));
+  border: 3px solid var(--mustard);
   transform: rotate(45deg);
   border-radius: 6px;
-  box-shadow: 3px 3px 0 rgba(42, 33, 28, 0.25);
+  box-shadow: 0 0 0 2px var(--ink);
 }
 
 .pin-want .pin-glyph { transform: rotate(-45deg); }
@@ -608,10 +610,10 @@ button { cursor: pointer; }
   height: 40px;
   margin: 0;
   border-radius: 50%;
-  background: var(--stamp);
-  color: white;
-  border: 3px dashed #d8f3df;
-  box-shadow: 0 0 0 2px var(--stamp);
+  background: var(--type, var(--stamp));
+  color: var(--type-ink, white);
+  border: 3px solid var(--stamp);
+  box-shadow: 0 0 0 2px #145c30;
 }
 
 .pin-draft {
@@ -715,16 +717,17 @@ button { cursor: pointer; }
 
 .cat-stamp svg { width: 14px; height: 14px; }
 
-.cat-Coast { color: #145e5a; }
-.cat-Wildlife { color: #1d6b38; }
-.cat-Outback { color: #8c3a24; }
-.cat-Mountains { color: #244864; }
-.cat-History { color: #6b3a2a; }
-.cat-Quirky { color: #8a6508; }
-.cat-Culture { color: #7a3458; }
-.cat-Rainforest { color: #1e5c38; }
-.cat-Museum { color: #3d3a78; }
-.cat-none { color: var(--ink-soft); }
+.cat-Coast { --type: #1f8a84; --type-ink: #f3ead7; }
+.cat-Wildlife { --type: #2f7d3a; --type-ink: #f3ead7; }
+.cat-Outback { --type: #c4652a; --type-ink: #fff6e8; }
+.cat-Mountains { --type: #1a4f55; --type-ink: #f3ead7; }
+.cat-History { --type: #9d3b32; --type-ink: #fff6e8; }
+.cat-Quirky { --type: #e2a51a; --type-ink: #2a211c; }
+.cat-Culture { --type: #a85a62; --type-ink: #fff6e8; }
+.cat-Rainforest { --type: #14634a; --type-ink: #f3ead7; }
+.cat-Museum { --type: #6e5844; --type-ink: #f3ead7; }
+.cat-none { --type: #cbbfa8; --type-ink: #2a211c; }
+.cat-stamp { color: var(--type, var(--ink-soft)); background: color-mix(in srgb, var(--type, transparent) 18%, var(--card)); }
 
 .postmark {
   color: var(--brick);
@@ -734,6 +737,50 @@ button { cursor: pointer; }
 }
 
 .place-note { font-size: 1.05rem; line-height: 1.4; margin: 8px 0; }
+
+.photo-strip { margin: 8px 0 12px; }
+.photo-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+.photo-head h3 {
+  margin: 0;
+  font-family: var(--card-face);
+  font-size: 1.15rem;
+}
+.photo-head span { font-size: 0.78rem; font-weight: 800; color: var(--ink-soft); }
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+  gap: 8px;
+  margin: 8px 0;
+  padding: 0;
+  list-style: none;
+}
+.photo-grid img {
+  width: 100%;
+  height: 88px;
+  object-fit: cover;
+  border-radius: 12px;
+  background: var(--paper-deep);
+  display: block;
+}
+.photo-add {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.photo-add input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.photo-add.is-busy { opacity: 0.7; }
 .family-tag, .hint, .fine-print, .source-link { color: var(--ink-soft); }
 .hint.warn { color: var(--brick); font-weight: 800; }
 .fine-print { font-size: 0.78rem; }
@@ -785,9 +832,50 @@ button { cursor: pointer; }
   padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background: var(--card);
+  background: color-mix(in srgb, var(--type, var(--card)) 24%, var(--card));
+  box-shadow: inset 8px 0 0 var(--type, transparent);
 }
-.place-row.is-selected { border-color: var(--teal); box-shadow: inset 4px 0 0 var(--teal); }
+.place-row.is-selected {
+  border-color: var(--teal-deep);
+  box-shadow: inset 8px 0 0 var(--type, var(--teal));
+}
+.row-mark {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--type, var(--paper-deep));
+  color: var(--type-ink, var(--ink));
+}
+.row-mark .type-mark svg { width: 22px; height: 22px; }
+.row-stamp {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  box-shadow: 0 0 0 2px var(--card);
+}
+.row-stamp.want {
+  width: 14px;
+  height: 14px;
+  background: var(--mustard);
+  border: 2px solid var(--mustard-deep);
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+.row-stamp.been {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--stamp);
+  color: white;
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 18px;
+  text-align: center;
+}
 .place-list .row-open {
   width: 100%;
   display: flex;

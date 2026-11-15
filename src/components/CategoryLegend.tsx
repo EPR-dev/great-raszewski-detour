@@ -1,4 +1,4 @@
-import { CATEGORIES, categorySvg } from "../lib/categories";
+import { CATEGORIES, categoryClass, categorySvg } from "../lib/categories";
 
 export function CategoryMark({ category }: { category: string | null }) {
   return (
@@ -21,7 +21,7 @@ export function CategoryLegend({
           <li key={category}>
             <button
               type="button"
-              className="type-filter"
+              className={`type-filter ${categoryClass(category)}`}
               data-testid={`type-${category}`}
               data-category={category}
               aria-pressed={selected === category}

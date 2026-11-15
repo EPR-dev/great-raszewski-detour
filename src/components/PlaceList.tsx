@@ -3,6 +3,7 @@ import type { Place, StatusFilter } from "../types";
 import { distanceKm, formatDistance, type MapPoint } from "../lib/distance";
 import { matchesPlaceName, matchesStatus, matchesType } from "../lib/places";
 import { regionLabel } from "../lib/regions";
+import { categoryClass } from "../lib/categories";
 import { CategoryMark } from "./CategoryLegend";
 import { EmptyBeen, EmptyCopy } from "./EmptyState";
 
@@ -81,19 +82,20 @@ export function PlaceList({
         <ul className="place-list">
           {filtered.map((place) => (
             <li key={place.id} id={`place-row-${place.id}`}>
-              <div className={place.id === selectedId ? "place-row is-selected" : "place-row"}>
+              <div
+                className={`place-row ${categoryClass(place.category)}${place.id === selectedId ? " is-selected" : ""}`}
+              >
                 <button
                   type="button"
                   className="row-open"
                   aria-current={place.id === selectedId ? "true" : undefined}
                   onClick={() => onSelect(place.id)}
                 >
-                  <span
-                    className={place.status === "been" ? "status-pin been" : "status-pin want"}
-                    aria-hidden="true"
-                  >
+                  <span className={`row-mark ${categoryClass(place.category)}`} aria-hidden="true">
                     <CategoryMark category={place.category} />
-                    {place.status === "been" ? <span className="status-tick">✓</span> : null}
+                    <span className={place.status === "been" ? "row-stamp been" : "row-stamp want"}>
+                      {place.status === "been" ? "✓" : ""}
+                    </span>
                   </span>
                   <span className="row-copy">
                     <span className="row-name">

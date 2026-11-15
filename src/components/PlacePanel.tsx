@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import type { Place } from "../types";
 import { CATEGORIES, categoryClass } from "../lib/categories";
 import { distanceKm, formatDistance, type MapPoint } from "../lib/distance";
+import type { PhotoAlbum } from "../lib/photos";
 import { CategoryMark } from "./CategoryLegend";
+import { PhotoStrip } from "./PhotoStrip";
 import { regionLabel } from "../lib/regions";
 
 export function PlacePanel({
@@ -17,6 +19,7 @@ export function PlacePanel({
   origin,
   locationNote,
   onAskLocation,
+  album,
 }: {
   place: Place;
   justStamped: boolean;
@@ -29,6 +32,7 @@ export function PlacePanel({
   origin: MapPoint | null;
   locationNote: string | null;
   onAskLocation: () => void;
+  album: PhotoAlbum;
 }) {
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
@@ -98,6 +102,7 @@ export function PlacePanel({
         </button>
       </header>
       <h2>{place.name}</h2>
+      <PhotoStrip placeId={place.id} album={album} />
       {origin ? (
         <p className="can-we-go" data-testid="can-we-go">
           Can we go there? {formatDistance(distanceKm(origin, place))}

@@ -11,6 +11,7 @@ import { PlaceList } from "./components/PlaceList";
 import { PlacePanel } from "./components/PlacePanel";
 import { PlaceSearch } from "./components/PlaceSearch";
 import { loadDemoPlaces, saveDemoPlaces } from "./lib/demoStore";
+import { demoAlbum, type PhotoAlbum } from "./lib/photos";
 import { messageOf } from "./lib/search";
 import { askBrowserLocation, LOCATION_OFF, type MapPoint } from "./lib/distance";
 import { matchesPlaceName, matchesStatus, matchesType, newCustomPlace } from "./lib/places";
@@ -24,6 +25,7 @@ import {
   fetchPlaces,
   savePlace,
   seedFamilyMap,
+  supabaseAlbum,
   type Membership,
 } from "./lib/remote";
 import type { LatLng, Place, StatusFilter } from "./types";
@@ -46,6 +48,7 @@ function MapShell({
   account,
   onSave,
   onDelete,
+  album,
 }: {
   demo: boolean;
   places: Place[];
@@ -58,13 +61,14 @@ function MapShell({
   } | null;
   onSave: (place: Place) => Promise<void>;
   onDelete: (id: string) => Promise<void>;
+  album: PhotoAlbum;
 }) {
   const wide = useWideScreen();
   const [filter, setFilter] = useState<StatusFilter>("all");
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [filtersOpen, setFiltersOpen] = useState(false);
-  const [view, setView] = useState<"map" | "list">("map");
+  const [listOpen, setListOpen] = useState(false);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [addOpen, setAddOpen] = useState(false);
   const [dropMode, setDropMode] = useState(false);
@@ -111,7 +115,12 @@ function MapShell({
   );
   const beenCount = places.filter((place) => place.status === "been").length;
   const showEmptyBeen =
-    view === "map" && filter === "been" && !typeFilter && beenCount === 0 && !selected && !addOpen;
+    !listOpen && filter === "been" && !typeFilter && beenCount === 0 && !selected && !addOpen;
+  const listExpanded = listOpen && !wide;
+
+  useEffect(() => {
+    if (wide) setListOpen(false);
+  }, [wide]);
   const activeFilters =
     (filter !== "all" ? 1 : 0) + (typeFilter ? 1 : 0) + (query.trim() ? 1 : 0);
 
@@ -119,7 +128,7 @@ function MapShell({
     setSelectedId(id);
     setAddOpen(false);
     setDropMode(false);
-    setView("map");
+    setListOpen(false);
   }, []);
 
   useEffect(() => {
@@ -162,7 +171,7 @@ function MapShell({
     setAddOpen(false);
     setDropMode(false);
     setFocusToken((token) => token + 1);
-    setView("map");
+    setListOpen(false);
   }
 
   function chooseFromSearch(id: string) {
@@ -206,7 +215,7 @@ function MapShell({
         onPlacePin={(point) => {
           setDraft(point);
           setDropMode(false);
-          setView("map");
+          setListOpen(false);
           setDraftFly((token) => token + 1);
         }}
         onClose={() => {
@@ -224,7 +233,7 @@ function MapShell({
             setAddOpen(false);
             setDropMode(false);
             setDraft(null);
-            setView("map");
+            setListOpen(false);
             setFocusToken((token) => token + 1);
           } catch (error) {
             setToast(messageOf(error));
@@ -232,7 +241,7 @@ function MapShell({
         }}
       />
     );
-  } else if (view === "list" || (wide && !selected)) {
+  } else if (listOpen || (wide && !selected)) {
     dock = (
       <PlaceList
         places={places}
@@ -290,6 +299,7 @@ function MapShell({
         origin={origin}
         locationNote={locationNote}
         onAskLocation={() => void allowLocation()}
+        album={album}
       />
     );
   }
@@ -332,14 +342,17 @@ function MapShell({
               </span>
             ) : null}
           </button>
-          <div className="segment view-toggle" role="group" aria-label="Map or list">
-            <button type="button" aria-pressed={view === "map"} onClick={() => setView("map")}>
-              Map
+          {wide ? null : (
+            <button
+              type="button"
+              className={`filters-toggle${listOpen ? " is-open" : ""}`}
+              aria-expanded={listOpen}
+              data-testid="list-toggle"
+              onClick={() => setListOpen((open) => !open)}
+            >
+              {listOpen ? "Close list" : "List"}
             </button>
-            <button type="button" aria-pressed={view === "list"} onClick={() => setView("list")}>
-              List
-            </button>
-          </div>
+          )}
           {account ? (
             <details className="account">
               <summary>{account.email}</summary>
@@ -383,7 +396,7 @@ function MapShell({
           ) : null}
         </div>
       </header>
-      <div className={`stage${view === "list" ? " is-list" : ""}${filtersOpen ? " filters-open" : ""}`}>
+      <div className={`stage${listExpanded ? " is-list" : ""}${filtersOpen ? " filters-open" : ""}`}>
         {filtersOpen ? (
           <section className="filter-drawer" id="map-filters" aria-label="Search and filters" data-testid="filter-drawer">
             <div className="filter-drawer-head">
@@ -429,7 +442,7 @@ function MapShell({
           onSelect={onSelectPin}
           onPick={pick}
           onRobertson={() => {
-            setView("map");
+            setListOpen(false);
             setRobertsonToken((token) => token + 1);
           }}
         />
@@ -448,7 +461,7 @@ function MapShell({
           onClick={() => {
             setAddOpen(true);
             setFiltersOpen(false);
-            setView("map");
+            setListOpen(false);
             setMovingId(null);
             setSelectedId(null);
             setDraft(null);
@@ -484,6 +497,7 @@ function MapShell({
 function DemoApp() {
   const [places, setPlaces] = useState<Place[] | null>(null);
   const placesRef = useRef<Place[]>([]);
+  const album = useMemo(() => demoAlbum(), []);
 
   useEffect(() => {
     const loaded = loadDemoPlaces();
@@ -520,7 +534,12 @@ function DemoApp() {
       setPlaces(previous);
       throw error;
     }
-  }, []);
+    try {
+      await album.removePlace(id);
+    } catch {
+      // The detour is already gone. A leftover photo stays in this browser.
+    }
+  }, [album]);
 
   if (!places) {
     return (
@@ -531,7 +550,15 @@ function DemoApp() {
   }
 
   return (
-    <MapShell demo places={places} notice={null} account={null} onSave={onSave} onDelete={onDelete} />
+    <MapShell
+      demo
+      places={places}
+      notice={null}
+      account={null}
+      onSave={onSave}
+      onDelete={onDelete}
+      album={album}
+    />
   );
 }
 
@@ -544,6 +571,10 @@ function SharedApp({ client }: { client: SupabaseClient }) {
   const [gateBusy, setGateBusy] = useState(false);
   const placesRef = useRef<Place[]>([]);
   const userId = session?.user.id ?? null;
+  const album = useMemo(
+    () => (membership ? supabaseAlbum(client, membership.mapId) : demoAlbum()),
+    [client, membership],
+  );
 
   useEffect(() => {
     void client.auth.getSession().then(({ data }) => setSession(data.session));
@@ -653,8 +684,13 @@ function SharedApp({ client }: { client: SupabaseClient }) {
         setPlaces(previous);
         throw error;
       }
+      try {
+        await album.removePlace(id);
+      } catch {
+        // The detour row is already gone. Storage cleanup can be retried later.
+      }
     },
-    [client, membership],
+    [album, client, membership],
   );
 
   if (session === undefined || (session && membership === undefined) || (membership && !ready)) {
@@ -696,6 +732,7 @@ function SharedApp({ client }: { client: SupabaseClient }) {
       notice={gateMessage}
       onSave={onSave}
       onDelete={onDelete}
+      album={album}
       account={{
         email: session.user.email ?? "Signed in",
         role: membership.role,

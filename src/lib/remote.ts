@@ -1,4 +1,11 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import {
+  PHOTO_LIMIT,
+  PHOTO_LIMIT_MESSAGE,
+  compressPhoto,
+  type PhotoAlbum,
+  type SavedPhoto,
+} from "./photos";
 import type { Place, VisitStatus } from "../types";
 
 type PlaceRow = {
@@ -132,4 +139,70 @@ export async function deletePlace(
 ): Promise<void> {
   const { error } = await client.from("places").delete().eq("map_id", mapId).eq("id", id);
   if (error) throw error;
+}
+
+export function supabaseAlbum(client: SupabaseClient, mapId: string): PhotoAlbum {
+  return {
+    async list(placeId) {
+      const { data, error } = await client
+        .from("place_photos")
+        .select("id, storage_path, created_at")
+        .eq("map_id", mapId)
+        .eq("place_id", placeId)
+        .order("created_at", { ascending: true });
+      if (error) throw error;
+      const photos: SavedPhoto[] = [];
+      for (const row of (data ?? []) as { id: string; storage_path: string }[]) {
+        const signed = await client.storage.from("place-photos").createSignedUrl(row.storage_path, 60 * 60);
+        if (signed.error || !signed.data?.signedUrl) continue;
+        photos.push({ id: row.id, url: signed.data.signedUrl });
+      }
+      return photos;
+    },
+    async add(placeId, file) {
+      const existing = await client
+        .from("place_photos")
+        .select("id", { count: "exact", head: true })
+        .eq("map_id", mapId)
+        .eq("place_id", placeId);
+      if (existing.error) throw existing.error;
+      if ((existing.count ?? 0) >= PHOTO_LIMIT) throw new Error(PHOTO_LIMIT_MESSAGE);
+      const blob = await compressPhoto(file);
+      const id = crypto.randomUUID();
+      const path = `${mapId}/${placeId}/${id}.jpg`;
+      const uploaded = await client.storage.from("place-photos").upload(path, blob, {
+        contentType: "image/jpeg",
+        upsert: false,
+      });
+      if (uploaded.error) throw uploaded.error;
+      const inserted = await client.from("place_photos").insert({
+        id,
+        map_id: mapId,
+        place_id: placeId,
+        storage_path: path,
+      });
+      if (inserted.error) {
+        await client.storage.from("place-photos").remove([path]);
+        if (inserted.error.message.includes(PHOTO_LIMIT_MESSAGE)) {
+          throw new Error(PHOTO_LIMIT_MESSAGE);
+        }
+        throw inserted.error;
+      }
+    },
+    async removePlace(placeId) {
+      const { data, error } = await client
+        .from("place_photos")
+        .select("storage_path")
+        .eq("map_id", mapId)
+        .eq("place_id", placeId);
+      if (error) throw error;
+      const paths = ((data ?? []) as { storage_path: string }[]).map((row) => row.storage_path);
+      if (paths.length > 0) {
+        const removed = await client.storage.from("place-photos").remove(paths);
+        if (removed.error) throw removed.error;
+      }
+      const deleted = await client.from("place_photos").delete().eq("map_id", mapId).eq("place_id", placeId);
+      if (deleted.error) throw deleted.error;
+    },
+  };
 }
