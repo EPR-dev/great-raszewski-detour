@@ -52,6 +52,19 @@ function FitAustralia() {
   return null;
 }
 
+function KeepSize() {
+  const map = useMap();
+  useEffect(() => {
+    const container = map.getContainer();
+    const observer = new ResizeObserver(() => {
+      map.invalidateSize();
+    });
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [map]);
+  return null;
+}
+
 function RobertsonFly({ token }: { token: number }) {
   const map = useMap();
   const seen = useRef(0);
@@ -219,6 +232,7 @@ export function MapView({
         />
         <ZoomControl position="topleft" />
         <FitAustralia />
+        <KeepSize />
         <RobertsonFly token={robertsonToken} />
         <FocusPoint token={draftFly} point={draft} />
         <FocusPlace token={focusToken} place={focusPlace} />

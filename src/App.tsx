@@ -63,6 +63,7 @@ function MapShell({
   const [filter, setFilter] = useState<StatusFilter>("all");
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
   const [query, setQuery] = useState("");
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [view, setView] = useState<"map" | "list">("map");
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [addOpen, setAddOpen] = useState(false);
@@ -111,6 +112,8 @@ function MapShell({
   const beenCount = places.filter((place) => place.status === "been").length;
   const showEmptyBeen =
     view === "map" && filter === "been" && !typeFilter && beenCount === 0 && !selected && !addOpen;
+  const activeFilters =
+    (filter !== "all" ? 1 : 0) + (typeFilter ? 1 : 0) + (query.trim() ? 1 : 0);
 
   const onSelectPin = useCallback((id: string) => {
     setSelectedId(id);
@@ -137,6 +140,15 @@ function MapShell({
     return () => window.clearTimeout(timer);
   }, [stampedId]);
 
+  useEffect(() => {
+    if (!filtersOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setFiltersOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [filtersOpen]);
+
   async function save(place: Place) {
     try {
       await onSave(place);
@@ -157,6 +169,7 @@ function MapShell({
     const place = places.find((item) => item.id === id);
     if (place && !matchesStatus(place, filter)) setFilter("all");
     if (place && typeFilter && place.category !== typeFilter) setTypeFilter(null);
+    setFiltersOpen(false);
     selectFromList(id);
   }
 
@@ -290,8 +303,8 @@ function MapShell({
       ) : null}
       {notice ? <p className="demo-banner">{notice}</p> : null}
       <header className="top">
-        <div className="brand-row">
-          <div>
+        <div className="top-bar">
+          <div className="brand">
             <h1 className="motel-sign">
               <span>The Great</span>
               <span>Raszewski Detour</span>
@@ -304,32 +317,22 @@ function MapShell({
             </strong>
             <span>original detours visited</span>
           </p>
-        </div>
-        <PlaceSearch places={places} query={query} onQuery={setQuery} onSelect={chooseFromSearch} />
-        <CategoryLegend
-          selected={typeFilter}
-          onToggle={(category) => setTypeFilter((current) => (current === category ? null : category))}
-        />
-        <div className="tool-row">
-          <div className="segment" role="group" aria-label="Filter detours">
-            {(
-              [
-                ["all", "All"],
-                ["next", "Next up"],
-                ["been", "Been there"],
-              ] as const
-            ).map(([value, label]) => (
-              <button
-                key={value}
-                type="button"
-                aria-pressed={filter === value}
-                onClick={() => setFilter(value)}
-              >
-                {label}
-              </button>
-            ))}
-          </div>
-          <div className="segment" role="group" aria-label="Map or list">
+          <button
+            type="button"
+            className={`filters-toggle${filtersOpen ? " is-open" : ""}`}
+            aria-expanded={filtersOpen}
+            aria-controls="map-filters"
+            data-testid="filters-toggle"
+            onClick={() => setFiltersOpen((open) => !open)}
+          >
+            {filtersOpen ? "Hide filters" : "Filters"}
+            {activeFilters > 0 ? (
+              <span className="filters-count" data-testid="filters-count">
+                {activeFilters}
+              </span>
+            ) : null}
+          </button>
+          <div className="segment view-toggle" role="group" aria-label="Map or list">
             <button type="button" aria-pressed={view === "map"} onClick={() => setView("map")}>
               Map
             </button>
@@ -380,7 +383,40 @@ function MapShell({
           ) : null}
         </div>
       </header>
-      <div className={`stage${view === "list" ? " is-list" : ""}`}>
+      <div className={`stage${view === "list" ? " is-list" : ""}${filtersOpen ? " filters-open" : ""}`}>
+        {filtersOpen ? (
+          <section className="filter-drawer" id="map-filters" aria-label="Search and filters" data-testid="filter-drawer">
+            <div className="filter-drawer-head">
+              <p className="legend-title">Search and filters</p>
+              <button type="button" className="text-button" data-testid="filters-close" onClick={() => setFiltersOpen(false)}>
+                Close
+              </button>
+            </div>
+            <PlaceSearch places={places} query={query} onQuery={setQuery} onSelect={chooseFromSearch} />
+            <CategoryLegend
+              selected={typeFilter}
+              onToggle={(category) => setTypeFilter((current) => (current === category ? null : category))}
+            />
+            <div className="segment status-filter" role="group" aria-label="Filter detours">
+              {(
+                [
+                  ["all", "All"],
+                  ["next", "Next up"],
+                  ["been", "Been there"],
+                ] as const
+              ).map(([value, label]) => (
+                <button
+                  key={value}
+                  type="button"
+                  aria-pressed={filter === value}
+                  onClick={() => setFilter(value)}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </section>
+        ) : null}
         <MapView
           places={visible}
           selectedId={selectedId}
@@ -411,6 +447,7 @@ function MapShell({
           data-testid="add-detour"
           onClick={() => {
             setAddOpen(true);
+            setFiltersOpen(false);
             setView("map");
             setMovingId(null);
             setSelectedId(null);
