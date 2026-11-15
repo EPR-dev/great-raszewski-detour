@@ -1,0 +1,1002 @@
+[
+  {
+    "id": "detour-001",
+    "name": "Robertson Pie Shop",
+    "lat": -34.58593,
+    "lng": 150.62624,
+    "region": "NSW",
+    "category": "Quirky",
+    "note": "The highway pie that started a hundred optimistic detours. Grab one while it is still hot.",
+    "sourceUrl": "https://www.robertsonpieshop.com.au/"
+  },
+  {
+    "id": "detour-002",
+    "name": "Fitzroy Falls",
+    "lat": -34.65,
+    "lng": 150.48333,
+    "region": "NSW",
+    "category": "Mountains",
+    "note": "A lookout over the falls in Morton National Park, mist included on a good morning.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/things-to-do/lookouts/fitzroy-falls-lookout"
+  },
+  {
+    "id": "detour-003",
+    "name": "Bombo Headland Quarry",
+    "lat": -34.652,
+    "lng": 150.862,
+    "region": "NSW",
+    "category": "Coast",
+    "note": "The old quarry headland at Kiama, where the rock is columnar and the sea is the colour of bottle glass.",
+    "sourceUrl": "https://www.visitnsw.com/destinations/south-coast/kiama-area/kiama"
+  },
+  {
+    "id": "detour-004",
+    "name": "Hyams Beach, Jervis Bay",
+    "lat": -35.10025,
+    "lng": 150.69191,
+    "region": "NSW",
+    "category": "Coast",
+    "note": "A white-sand beach on Jervis Bay. The water really is that clear.",
+    "sourceUrl": "https://www.visitnsw.com/destinations/south-coast/jervis-bay-and-shoalhaven/jervis-bay"
+  },
+  {
+    "id": "detour-005",
+    "name": "Murrays Beach, Booderee",
+    "lat": -35.125,
+    "lng": 150.75806,
+    "region": "JBT",
+    "category": "Coast",
+    "note": "A quiet beach in Booderee National Park, Jervis Bay Territory, facing Bowen Island. Park pass required.",
+    "sourceUrl": "https://parksaustralia.gov.au/booderee/"
+  },
+  {
+    "id": "detour-006",
+    "name": "Three Sisters, Blue Mountains",
+    "lat": -33.73271,
+    "lng": 150.31196,
+    "region": "NSW",
+    "category": "Mountains",
+    "note": "The three sandstone sisters, seen from Echo Point. The valley does the talking.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/things-to-do/lookouts/echo-point-lookout"
+  },
+  {
+    "id": "detour-007",
+    "name": "Sydney Opera House",
+    "lat": -33.85681,
+    "lng": 151.21514,
+    "region": "NSW",
+    "category": "Culture",
+    "note": "The sails, from the forecourt. Go around sunset if the family can agree on a time.",
+    "sourceUrl": "https://www.sydneyoperahouse.com/"
+  },
+  {
+    "id": "detour-008",
+    "name": "Bondi to Coogee Coastal Walk",
+    "lat": -33.89111,
+    "lng": 151.27417,
+    "region": "NSW",
+    "category": "Coast",
+    "note": "A clifftop walk that starts at Bondi Icebergs and ends at Coogee. Swim stops are the point.",
+    "sourceUrl": "https://www.sydney.com/destinations/sydney/sydney-east/bondi/attractions/bondi-to-coogee-coastal-walk"
+  },
+  {
+    "id": "detour-009",
+    "name": "Stockton Sand Dunes, Port Stephens",
+    "lat": -32.78657,
+    "lng": 152.0812,
+    "region": "NSW",
+    "category": "Coast",
+    "note": "The huge dunes at Birubi Point, on Worimi country. Tours run out onto the sand from here.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/worimi-conservation-lands"
+  },
+  {
+    "id": "detour-010",
+    "name": "Sea Cliff Bridge",
+    "lat": -34.25389,
+    "lng": 150.97389,
+    "region": "NSW",
+    "category": "Coast",
+    "note": "The bridge that curves off the cliff at Clifton. Pull over before someone yells look.",
+    "sourceUrl": "https://www.visitnsw.com/destinations/south-coast/wollongong-area/wollongong"
+  },
+  {
+    "id": "detour-011",
+    "name": "South West Rocks and Trial Bay Gaol",
+    "lat": -30.87718,
+    "lng": 153.07025,
+    "region": "NSW",
+    "category": "History",
+    "note": "A ruined seaside gaol at Trial Bay, above the beaches of South West Rocks.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/things-to-do/historic-buildings/trial-bay-gaol"
+  },
+  {
+    "id": "detour-012",
+    "name": "Cape Byron Lighthouse",
+    "lat": -28.63278,
+    "lng": 153.63889,
+    "region": "NSW",
+    "category": "Coast",
+    "note": "The lighthouse on the easternmost point of the Australian mainland. Whales pass in season.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/cape-byron-state-conservation-area"
+  },
+  {
+    "id": "detour-013",
+    "name": "Mount Kosciuszko",
+    "lat": -36.45583,
+    "lng": 148.26361,
+    "region": "NSW",
+    "category": "Mountains",
+    "note": "The summit of mainland Australia. The walk leaves from Thredbo, and the weather can turn.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/kosciuszko-national-park"
+  },
+  {
+    "id": "detour-014",
+    "name": "Mungo National Park",
+    "lat": -33.74165,
+    "lng": 143.12783,
+    "region": "NSW",
+    "category": "Outback",
+    "note": "The Walls of China on a dry lake in the Willandra Lakes. Stay on the boardwalk; this place is ancient and fragile.",
+    "sourceUrl": "https://www.nationalparks.nsw.gov.au/visit-a-park/parks/mungo-national-park"
+  },
+  {
+    "id": "detour-015",
+    "name": "Broken Hill",
+    "lat": -31.95,
+    "lng": 141.46667,
+    "region": "NSW",
+    "category": "Outback",
+    "note": "An outback mining city with the line of lode on the skyline. The desert starts at the end of the street.",
+    "sourceUrl": "https://www.brokenhill.nsw.gov.au/"
+  },
+  {
+    "id": "detour-016",
+    "name": "Twelve Apostles",
+    "lat": -38.66192,
+    "lng": 143.10525,
+    "region": "VIC",
+    "category": "Coast",
+    "note": "Limestone stacks in the Southern Ocean. The lookout is the view; the cliff edge is not a shortcut.",
+    "sourceUrl": "https://www.parks.vic.gov.au/places-to-see/parks/port-campbell-national-park"
+  },
+  {
+    "id": "detour-017",
+    "name": "Loch Ard Gorge",
+    "lat": -38.64658,
+    "lng": 143.0705,
+    "region": "VIC",
+    "category": "Coast",
+    "note": "The gorge of a famous shipwreck, a short walk from the Apostles. Check whether the beach steps are open.",
+    "sourceUrl": "https://www.parks.vic.gov.au/places-to-see/parks/port-campbell-national-park"
+  },
+  {
+    "id": "detour-018",
+    "name": "Cape Otway Lightstation",
+    "lat": -38.85656,
+    "lng": 143.51172,
+    "region": "VIC",
+    "category": "History",
+    "note": "A lightstation on the wild Otway coast, still watching Bass Strait.",
+    "sourceUrl": "https://www.parks.vic.gov.au/places-to-see/parks/great-otway-national-park"
+  },
+  {
+    "id": "detour-019",
+    "name": "The Pinnacle, Grampians (Gariwerd)",
+    "lat": -37.15975,
+    "lng": 142.51522,
+    "region": "VIC",
+    "category": "Mountains",
+    "note": "The rock balcony above Halls Gap. The Wonderland walk is the classic way up.",
+    "sourceUrl": "https://www.parks.vic.gov.au/places-to-see/parks/grampians-national-park"
+  },
+  {
+    "id": "detour-020",
+    "name": "Sovereign Hill, Ballarat",
+    "lat": -37.57512,
+    "lng": 143.8659,
+    "region": "VIC",
+    "category": "Museum",
+    "note": "A goldrush town that still runs. Candlelight tours if everyone can stay up.",
+    "sourceUrl": "https://www.sovereignhill.com.au/"
+  },
+  {
+    "id": "detour-021",
+    "name": "Phillip Island Penguin Parade",
+    "lat": -38.50895,
+    "lng": 145.14781,
+    "region": "VIC",
+    "category": "Wildlife",
+    "note": "Little penguins come ashore at dusk at Summerlands. Book it; the parade does not wait for late families.",
+    "sourceUrl": "https://www.penguins.org.au/attractions/penguin-parade/"
+  },
+  {
+    "id": "detour-022",
+    "name": "Wilsons Promontory, Tidal River",
+    "lat": -39.03056,
+    "lng": 146.32139,
+    "region": "VIC",
+    "category": "Coast",
+    "note": "Tidal River, the beach at the foot of Wilsons Prom. Wildlife has right of way.",
+    "sourceUrl": "https://www.parks.vic.gov.au/places-to-see/parks/wilsons-promontory-national-park"
+  },
+  {
+    "id": "detour-023",
+    "name": "Puffing Billy Railway",
+    "lat": -37.9075,
+    "lng": 145.35667,
+    "region": "VIC",
+    "category": "History",
+    "note": "Steam trains from Belgrave into the Dandenong Ranges. Sit where the legs can dangle, if the carriage allows.",
+    "sourceUrl": "https://puffingbilly.com.au/"
+  },
+  {
+    "id": "detour-024",
+    "name": "Brighton Bathing Boxes",
+    "lat": -37.91851,
+    "lng": 144.98716,
+    "region": "VIC",
+    "category": "Quirky",
+    "note": "A row of bright bathing boxes on Dendy Street Beach. They are photographs, not cubbyhouses.",
+    "sourceUrl": "https://www.bayside.vic.gov.au/"
+  },
+  {
+    "id": "detour-025",
+    "name": "Queen Victoria Market",
+    "lat": -37.80749,
+    "lng": 144.95771,
+    "region": "VIC",
+    "category": "Culture",
+    "note": "Melbourne's market halls. Go hungry, leave with more than you planned.",
+    "sourceUrl": "https://qvm.com.au/"
+  },
+  {
+    "id": "detour-026",
+    "name": "Healesville Sanctuary",
+    "lat": -37.68428,
+    "lng": 145.53134,
+    "region": "VIC",
+    "category": "Wildlife",
+    "note": "A bush sanctuary in the Yarra Valley. The platypus dusk tour is the quiet show.",
+    "sourceUrl": "https://www.zoo.org.au/healesville/"
+  },
+  {
+    "id": "detour-027",
+    "name": "Mount Buffalo",
+    "lat": -36.72223,
+    "lng": 146.81973,
+    "region": "VIC",
+    "category": "Mountains",
+    "note": "The old chalet and the gorge lookouts on a hanging plateau above the Ovens Valley.",
+    "sourceUrl": "https://www.parks.vic.gov.au/places-to-see/parks/mount-buffalo-national-park"
+  },
+  {
+    "id": "detour-028",
+    "name": "Beechworth Historic Precinct",
+    "lat": -36.35949,
+    "lng": 146.68701,
+    "region": "VIC",
+    "category": "History",
+    "note": "A gold-town street of granite buildings, Ned Kelly stories included.",
+    "sourceUrl": "https://www.beechworth.com/"
+  },
+  {
+    "id": "detour-029",
+    "name": "Silo Art Trail, Brim",
+    "lat": -36.06667,
+    "lng": 142.41667,
+    "region": "VIC",
+    "category": "Quirky",
+    "note": "The painted silos at Brim, first of the Silo Art Trail. Blink and the highway has gone past them.",
+    "sourceUrl": "https://www.siloarttrail.com/"
+  },
+  {
+    "id": "detour-030",
+    "name": "Great Barrier Reef, Agincourt Reef",
+    "lat": -16.00568,
+    "lng": 145.80859,
+    "region": "QLD",
+    "category": "Coast",
+    "note": "A ribbon reef out from Port Douglas. You only get there by a permitted boat; the pontoon is the visit, not a beach car park.",
+    "sourceUrl": "https://www2.gbrmpa.gov.au/"
+  },
+  {
+    "id": "detour-031",
+    "name": "Mossman Gorge",
+    "lat": -16.4675,
+    "lng": 145.35194,
+    "region": "QLD",
+    "category": "Rainforest",
+    "note": "A rainforest river on Kuku Yalanji country, with a walk beside the boulders.",
+    "sourceUrl": "https://www.mossmangorge.com.au/"
+  },
+  {
+    "id": "detour-032",
+    "name": "Cape Tribulation",
+    "lat": -16.08878,
+    "lng": 145.46221,
+    "region": "QLD",
+    "category": "Rainforest",
+    "note": "Where the rainforest meets the reef. The beach is the destination, and cassowaries have right of way.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/daintree"
+  },
+  {
+    "id": "detour-033",
+    "name": "Whitehaven Beach",
+    "lat": -20.27541,
+    "lng": 149.04174,
+    "region": "QLD",
+    "category": "Coast",
+    "note": "The long white beach on Whitsunday Island. It is a boat day, not a driveway.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/whitsunday-islands"
+  },
+  {
+    "id": "detour-034",
+    "name": "Lake McKenzie (Boorangoora), K'gari",
+    "lat": -25.4459,
+    "lng": 153.057,
+    "region": "QLD",
+    "category": "Coast",
+    "note": "A perched lake of white sand on K'gari. Swim, then leave the sand on the beach, not in your towel.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/kgari-fraser"
+  },
+  {
+    "id": "detour-035",
+    "name": "Noosa National Park",
+    "lat": -26.37944,
+    "lng": 153.10102,
+    "region": "QLD",
+    "category": "Coast",
+    "note": "The coastal track at Noosa Heads. Boiling Pot lookout is the postcard stop.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/noosa"
+  },
+  {
+    "id": "detour-036",
+    "name": "Australia Zoo",
+    "lat": -26.83664,
+    "lng": 152.95937,
+    "region": "QLD",
+    "category": "Wildlife",
+    "note": "The big zoo at Beerwah. Crocodiles at feeding time, shade at lunch.",
+    "sourceUrl": "https://www.australiazoo.com.au/"
+  },
+  {
+    "id": "detour-037",
+    "name": "Springbrook National Park, Natural Bridge",
+    "lat": -28.2307,
+    "lng": 153.2435,
+    "region": "QLD",
+    "category": "Rainforest",
+    "note": "A waterfall that falls through a rock arch. Glow-worms show up after dark if you stay quiet.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/springbrook"
+  },
+  {
+    "id": "detour-038",
+    "name": "Lamington National Park, O'Reilly's",
+    "lat": -28.23089,
+    "lng": 153.13593,
+    "region": "QLD",
+    "category": "Rainforest",
+    "note": "The rainforest balcony at O'Reilly's in Lamington. Birds will try to join breakfast.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/lamington"
+  },
+  {
+    "id": "detour-039",
+    "name": "Currumbin Wildlife Sanctuary",
+    "lat": -28.13583,
+    "lng": 153.4898,
+    "region": "QLD",
+    "category": "Wildlife",
+    "note": "A creek-side wildlife park at Currumbin. The lorikeets have opinions.",
+    "sourceUrl": "https://currumbinsanctuary.com.au/"
+  },
+  {
+    "id": "detour-040",
+    "name": "Magnetic Island Forts Walk",
+    "lat": -19.1244,
+    "lng": 146.87047,
+    "region": "QLD",
+    "category": "History",
+    "note": "World War II forts on Magnetic Island, with a view back across the water to Townsville.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/magnetic-island"
+  },
+  {
+    "id": "detour-041",
+    "name": "Paronella Park",
+    "lat": -17.65263,
+    "lng": 145.95654,
+    "region": "QLD",
+    "category": "History",
+    "note": "A Spanish-style castle in the rainforest, built for a sweetheart. The hydro still runs.",
+    "sourceUrl": "https://www.paronellapark.com.au/"
+  },
+  {
+    "id": "detour-042",
+    "name": "Undara Lava Tubes",
+    "lat": -18.20111,
+    "lng": 144.59611,
+    "region": "QLD",
+    "category": "Outback",
+    "note": "Lava tubes you see with a guide and a lamp. The savannah around Undara does the driving.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/undara-volcanic"
+  },
+  {
+    "id": "detour-043",
+    "name": "Australian Age of Dinosaurs, Winton",
+    "lat": -22.47906,
+    "lng": 143.18277,
+    "region": "QLD",
+    "category": "Museum",
+    "note": "A working dinosaur museum on a jump-up outside Winton. Fossils, not a theme park.",
+    "sourceUrl": "https://www.australianageofdinosaurs.com/"
+  },
+  {
+    "id": "detour-044",
+    "name": "Cape York, The Tip (Pajinka)",
+    "lat": -10.68861,
+    "lng": 142.53167,
+    "region": "QLD",
+    "category": "Outback",
+    "note": "The northern tip of the continent, Pajinka, on Gudang and Yadhaykenu country. Remote, permit country, and a long way from a servo.",
+    "sourceUrl": "https://parks.des.qld.gov.au/parks/apudthama"
+  },
+  {
+    "id": "detour-045",
+    "name": "Wilpena Pound (Ikara)",
+    "lat": -31.52646,
+    "lng": 138.60615,
+    "region": "SA",
+    "category": "Outback",
+    "note": "The natural amphitheatre of Ikara. This pin is the visitor hub at Wilpena, where the walks begin.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/ikara-flinders-ranges-national-park"
+  },
+  {
+    "id": "detour-046",
+    "name": "Brachina Gorge",
+    "lat": -31.33217,
+    "lng": 138.59031,
+    "region": "SA",
+    "category": "Outback",
+    "note": "A drive through deep time in the Flinders Ranges. The Golden Spike marks the start of the Ediacaran.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/ikara-flinders-ranges-national-park"
+  },
+  {
+    "id": "detour-047",
+    "name": "Coober Pedy",
+    "lat": -29.01111,
+    "lng": 134.75556,
+    "region": "SA",
+    "category": "Outback",
+    "note": "An opal town that lives underground. A dugout is cooler than the street at noon.",
+    "sourceUrl": "https://www.cooberpedy.sa.gov.au/"
+  },
+  {
+    "id": "detour-048",
+    "name": "Farina Historic Township",
+    "lat": -30.07513,
+    "lng": 138.27601,
+    "region": "SA",
+    "category": "History",
+    "note": "A ghost town on the old Ghan route, looked after by volunteers. The bakery opens in season.",
+    "sourceUrl": "https://www.farinarestoration.com/"
+  },
+  {
+    "id": "detour-049",
+    "name": "Remarkable Rocks, Kangaroo Island",
+    "lat": -36.04819,
+    "lng": 136.75716,
+    "region": "SA",
+    "category": "Coast",
+    "note": "Granite boulders on a dome above the Southern Ocean, in Flinders Chase.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/flinders-chase-national-park"
+  },
+  {
+    "id": "detour-050",
+    "name": "Seal Bay, Kangaroo Island",
+    "lat": -35.99861,
+    "lng": 137.3625,
+    "region": "SA",
+    "category": "Wildlife",
+    "note": "A boardwalk through a sea-lion colony. Stay on it; they are not posing.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/seal-bay-conservation-park"
+  },
+  {
+    "id": "detour-051",
+    "name": "Kuitpo Forest",
+    "lat": -35.21796,
+    "lng": 138.70033,
+    "region": "SA",
+    "category": "Mountains",
+    "note": "Stringybark forest in the Adelaide Hills. Picnic tables below, koalas if you look up.",
+    "sourceUrl": "https://www.forestrysa.com.au/"
+  },
+  {
+    "id": "detour-052",
+    "name": "Victor Harbor and Granite Island",
+    "lat": -35.5641,
+    "lng": 138.63023,
+    "region": "SA",
+    "category": "Coast",
+    "note": "The causeway from Victor Harbor lands on Granite Island. Little penguins, big wind.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/granite-island-recreation-park"
+  },
+  {
+    "id": "detour-053",
+    "name": "Naracoorte Caves",
+    "lat": -37.03611,
+    "lng": 140.79764,
+    "region": "SA",
+    "category": "History",
+    "note": "Fossil caves at Naracoorte, a World Heritage ground-sloth kind of place.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/naracoorte-caves-national-park"
+  },
+  {
+    "id": "detour-054",
+    "name": "Umpherston Sinkhole (Balumbul)",
+    "lat": -37.8388,
+    "lng": 140.80835,
+    "region": "SA",
+    "category": "Quirky",
+    "note": "A sinkhole garden in Mount Gambier, also called Balumbul. Stairs down into the ferns.",
+    "sourceUrl": "https://www.mountgambier.sa.gov.au/"
+  },
+  {
+    "id": "detour-055",
+    "name": "Coffin Bay National Park",
+    "lat": -34.68058,
+    "lng": 135.32136,
+    "region": "SA",
+    "category": "Coast",
+    "note": "Point Avoid lookout, the sealed-road view over the cliffs and Avoid Bay.",
+    "sourceUrl": "https://www.parks.sa.gov.au/parks/coffin-bay-national-park"
+  },
+  {
+    "id": "detour-056",
+    "name": "Adelaide Central Market",
+    "lat": -34.92972,
+    "lng": 138.5975,
+    "region": "SA",
+    "category": "Culture",
+    "note": "Adelaide's covered market. The jam donut is not a rumour.",
+    "sourceUrl": "https://www.adelaidecentralmarket.com.au/"
+  },
+  {
+    "id": "detour-057",
+    "name": "The Pinnacles, Nambung",
+    "lat": -30.60583,
+    "lng": 115.1575,
+    "region": "WA",
+    "category": "Outback",
+    "note": "Thousands of limestone pillars in the yellow sand of Nambung National Park. Dawn is the quiet version.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/park/nambung-national-park"
+  },
+  {
+    "id": "detour-058",
+    "name": "Rottnest Island (Wadjemup)",
+    "lat": -31.99638,
+    "lng": 115.53997,
+    "region": "WA",
+    "category": "Coast",
+    "note": "Thomson Bay settlement on Wadjemup. Bikes, quokkas, and a ferry from Fremantle.",
+    "sourceUrl": "https://www.rottnestisland.com/"
+  },
+  {
+    "id": "detour-059",
+    "name": "Turquoise Bay, Ningaloo",
+    "lat": -22.09648,
+    "lng": 113.8894,
+    "region": "WA",
+    "category": "Coast",
+    "note": "A beach in Cape Range where Ningaloo Reef starts under your feet. Read the current signs before you drift.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/park/cape-range-national-park"
+  },
+  {
+    "id": "detour-060",
+    "name": "Monkey Mia",
+    "lat": -25.79472,
+    "lng": 113.71722,
+    "region": "WA",
+    "category": "Wildlife",
+    "note": "Dolphins that still visit the shallows. The ranger talk is part of the visit.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/site/monkey-mia"
+  },
+  {
+    "id": "detour-061",
+    "name": "Kalbarri Skywalk",
+    "lat": -27.5563,
+    "lng": 114.434,
+    "region": "WA",
+    "category": "Mountains",
+    "note": "Two platforms out over the Murchison gorge. The path is flat; the drop is not.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/site/kalbarri-skywalk"
+  },
+  {
+    "id": "detour-062",
+    "name": "Wave Rock (Hyden Rock)",
+    "lat": -32.44389,
+    "lng": 118.89828,
+    "region": "WA",
+    "category": "Outback",
+    "note": "A granite wave north of Hyden. It is exactly as advertised, which is rare.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/site/wave-rock"
+  },
+  {
+    "id": "detour-063",
+    "name": "Lucky Bay, Cape Le Grand",
+    "lat": -33.9944,
+    "lng": 122.232,
+    "region": "WA",
+    "category": "Coast",
+    "note": "A bay in Cape Le Grand where kangaroos use the beach. The sand is seriously white.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/park/cape-le-grand-national-park"
+  },
+  {
+    "id": "detour-064",
+    "name": "Valley of the Giants Tree Top Walk",
+    "lat": -34.97756,
+    "lng": 116.89354,
+    "region": "WA",
+    "category": "Rainforest",
+    "note": "A steel walk through the red tingle canopy near Walpole. The Ancient Empire boardwalk is the ground-level version.",
+    "sourceUrl": "https://www.treetopwalk.com.au/"
+  },
+  {
+    "id": "detour-065",
+    "name": "Busselton Jetty",
+    "lat": -33.6369,
+    "lng": 115.3401,
+    "region": "WA",
+    "category": "Coast",
+    "note": "The long jetty at Busselton. Walk it, or let the little train do the middle.",
+    "sourceUrl": "https://www.busseltonjetty.com.au/"
+  },
+  {
+    "id": "detour-066",
+    "name": "Jewel Cave, Augusta",
+    "lat": -34.2738,
+    "lng": 115.0979,
+    "region": "WA",
+    "category": "Quirky",
+    "note": "A show cave in the Leeuwin-Naturaliste ridge, near Augusta. Stalactites, and a guided descent.",
+    "sourceUrl": "https://www.margaretriver.com/"
+  },
+  {
+    "id": "detour-067",
+    "name": "Karijini National Park, Dales Gorge",
+    "lat": -22.47881,
+    "lng": 118.56138,
+    "region": "WA",
+    "category": "Outback",
+    "note": "Fern pools and Fortescue Falls in Dales Gorge. The trail has stairs, and a swim at the bottom.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/park/karijini-national-park"
+  },
+  {
+    "id": "detour-068",
+    "name": "Cable Beach, Broome",
+    "lat": -17.95223,
+    "lng": 122.20558,
+    "region": "WA",
+    "category": "Coast",
+    "note": "The wide sunset beach at Broome. Camels are optional. The tides are not small.",
+    "sourceUrl": "https://www.broome.wa.gov.au/"
+  },
+  {
+    "id": "detour-069",
+    "name": "Horizontal Falls (Garaanngaddim)",
+    "lat": -16.38325,
+    "lng": 123.95797,
+    "region": "WA",
+    "category": "Coast",
+    "note": "A tidal waterfall in Talbot Bay. You see it from a boat or a plane, with permission on Dambimangari country. There is no road to the falls.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/park/lalang-gaddam-marine-park"
+  },
+  {
+    "id": "detour-070",
+    "name": "Bungle Bungle Range, Purnululu",
+    "lat": -17.48922,
+    "lng": 128.37519,
+    "region": "WA",
+    "category": "Outback",
+    "note": "The beehive domes. Cathedral Gorge leaves from Piccaninny car park. The road in is seasonal and 4WD only.",
+    "sourceUrl": "https://exploreparks.dbca.wa.gov.au/park/purnululu-national-park"
+  },
+  {
+    "id": "detour-071",
+    "name": "Cradle Mountain, Dove Lake",
+    "lat": -41.65806,
+    "lng": 145.96194,
+    "region": "TAS",
+    "category": "Mountains",
+    "note": "The boatshed view of Cradle Mountain across Dove Lake. The circuit is the family classic.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/cradle-mountain"
+  },
+  {
+    "id": "detour-072",
+    "name": "Wineglass Bay Lookout",
+    "lat": -42.15494,
+    "lng": 148.29357,
+    "region": "TAS",
+    "category": "Coast",
+    "note": "The lookout over the curved bay in Freycinet. The beach is a longer walk down.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/freycinet-national-park"
+  },
+  {
+    "id": "detour-073",
+    "name": "Bay of Fires, Binalong Bay",
+    "lat": -41.24899,
+    "lng": 148.31215,
+    "region": "TAS",
+    "category": "Coast",
+    "note": "Orange lichen rocks at Binalong Bay, the easy end of the Bay of Fires.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/bay-of-fires-conservation-area"
+  },
+  {
+    "id": "detour-074",
+    "name": "Port Arthur Historic Site",
+    "lat": -43.14741,
+    "lng": 147.85052,
+    "region": "TAS",
+    "category": "History",
+    "note": "The convict ruins on the Tasman Peninsula. The harbour is beautiful and the history is not soft.",
+    "sourceUrl": "https://portarthur.org.au/"
+  },
+  {
+    "id": "detour-075",
+    "name": "Salamanca Market",
+    "lat": -42.88622,
+    "lng": 147.33251,
+    "region": "TAS",
+    "category": "Culture",
+    "note": "Saturday stalls in the sandstone warehouses at Salamanca Place. Go before the fudge stalls win.",
+    "sourceUrl": "https://www.salamancamarket.com.au/"
+  },
+  {
+    "id": "detour-076",
+    "name": "kunanyi / Mount Wellington",
+    "lat": -42.896,
+    "lng": 147.23731,
+    "region": "TAS",
+    "category": "Mountains",
+    "note": "The summit of kunanyi. The lookout is often in the cloud, which is its own view.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/wellington-park"
+  },
+  {
+    "id": "detour-077",
+    "name": "Bruny Island, The Neck",
+    "lat": -43.26999,
+    "lng": 147.34796,
+    "region": "TAS",
+    "category": "Coast",
+    "note": "The isthmus lookout on Bruny. Penguins on one side, surf on the other.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/south-bruny-national-park"
+  },
+  {
+    "id": "detour-078",
+    "name": "Maria Island, Darlington and Painted Cliffs",
+    "lat": -42.58188,
+    "lng": 148.0652,
+    "region": "TAS",
+    "category": "Wildlife",
+    "note": "The ferry lands at Darlington. Wombats treat the lawns as theirs, and the Painted Cliffs are a low-tide walk.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/maria-island-national-park"
+  },
+  {
+    "id": "detour-079",
+    "name": "Tasman Arch",
+    "lat": -43.03611,
+    "lng": 147.95083,
+    "region": "TAS",
+    "category": "Coast",
+    "note": "A rock arch in the sea cliffs, with the Devil's Kitchen next door.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/tasman-national-park"
+  },
+  {
+    "id": "detour-080",
+    "name": "Cataract Gorge, Launceston",
+    "lat": -41.44611,
+    "lng": 147.11944,
+    "region": "TAS",
+    "category": "Mountains",
+    "note": "A gorge in the middle of Launceston, with a pool, peacocks, and a chairlift if the legs vote no.",
+    "sourceUrl": "https://www.launceston.tas.gov.au/"
+  },
+  {
+    "id": "detour-081",
+    "name": "Stanley, The Nut",
+    "lat": -40.7637,
+    "lng": 145.30319,
+    "region": "TAS",
+    "category": "Mountains",
+    "note": "The volcanic plug above Stanley. The chairlift is the kind option; the path is the smug one.",
+    "sourceUrl": "https://parks.tas.gov.au/"
+  },
+  {
+    "id": "detour-082",
+    "name": "Russell Falls, Mount Field",
+    "lat": -42.67703,
+    "lng": 146.71262,
+    "region": "TAS",
+    "category": "Mountains",
+    "note": "A short walk to a waterfall in Mount Field, ferns the whole way.",
+    "sourceUrl": "https://parks.tas.gov.au/explore-our-parks/mount-field-national-park"
+  },
+  {
+    "id": "detour-083",
+    "name": "Uluru Base Walk",
+    "lat": -25.345,
+    "lng": 131.03611,
+    "region": "NT",
+    "category": "Outback",
+    "note": "The walk around the base of Uluru. The climb is closed. Start early and carry more water than you think.",
+    "sourceUrl": "https://parksaustralia.gov.au/uluru/do/walks/uluru-base-walk/"
+  },
+  {
+    "id": "detour-084",
+    "name": "Kata Tjuta, Valley of the Winds",
+    "lat": -25.2848,
+    "lng": 130.7259,
+    "region": "NT",
+    "category": "Outback",
+    "note": "A walk in among the domes. The full circuit is a real hike; Karu Lookout is the shorter turn. This pin is the car park.",
+    "sourceUrl": "https://parksaustralia.gov.au/uluru/do/walks/valley-of-the-winds/"
+  },
+  {
+    "id": "detour-085",
+    "name": "Kings Canyon, Watarrka",
+    "lat": -24.2556,
+    "lng": 131.56988,
+    "region": "NT",
+    "category": "Outback",
+    "note": "The rim walk at Watarrka. Canyon walls, a garden at the bottom, and a long stair.",
+    "sourceUrl": "https://nt.gov.au/parks/find-a-park/watarrka-national-park"
+  },
+  {
+    "id": "detour-086",
+    "name": "Ormiston Gorge",
+    "lat": -23.6323,
+    "lng": 132.72673,
+    "region": "NT",
+    "category": "Outback",
+    "note": "A waterhole in the West MacDonnells, with ghost gums and a gorge walk.",
+    "sourceUrl": "https://nt.gov.au/parks/find-a-park/tjoritja-west-macdonnell-national-park"
+  },
+  {
+    "id": "detour-087",
+    "name": "Standley Chasm (Angkerle Atwatye)",
+    "lat": -23.71613,
+    "lng": 133.47015,
+    "region": "NT",
+    "category": "Outback",
+    "note": "A narrow cleft in the range, on private Aboriginal land. Midday is when the light drops in.",
+    "sourceUrl": "https://www.standleychasm.com.au/"
+  },
+  {
+    "id": "detour-088",
+    "name": "Alice Springs Desert Park",
+    "lat": -23.70801,
+    "lng": 133.83418,
+    "region": "NT",
+    "category": "Wildlife",
+    "note": "Desert habitats in one walkable park on the edge of Alice Springs, nocturnal house included.",
+    "sourceUrl": "https://alicespringsdesertpark.com.au/"
+  },
+  {
+    "id": "detour-089",
+    "name": "Devils Marbles (Karlu Karlu)",
+    "lat": -20.56667,
+    "lng": 134.26667,
+    "region": "NT",
+    "category": "Outback",
+    "note": "The rounded boulders of Karlu Karlu. Walk the loop and leave every rock where it is.",
+    "sourceUrl": "https://nt.gov.au/parks/find-a-park/karlu-karlu-devils-marbles-conservation-reserve"
+  },
+  {
+    "id": "detour-090",
+    "name": "Nitmiluk Gorge",
+    "lat": -14.3125,
+    "lng": 132.4742,
+    "region": "NT",
+    "category": "Outback",
+    "note": "The gorge at Nitmiluk, on Jawoyn country. A boat, or a walk above the first gorge.",
+    "sourceUrl": "https://nt.gov.au/parks/find-a-park/nitmiluk-national-park"
+  },
+  {
+    "id": "detour-091",
+    "name": "Litchfield National Park, Florence Falls",
+    "lat": -13.09872,
+    "lng": 130.78341,
+    "region": "NT",
+    "category": "Rainforest",
+    "note": "A plunge pool at Florence Falls. The stairs down are the price of the swim.",
+    "sourceUrl": "https://nt.gov.au/parks/find-a-park/litchfield-national-park"
+  },
+  {
+    "id": "detour-092",
+    "name": "Ubirr, Kakadu",
+    "lat": -12.40969,
+    "lng": 132.95617,
+    "region": "NT",
+    "category": "Culture",
+    "note": "Rock art and a floodplain lookout at Ubirr. Sunset is the famous version. The art sites close for part of the day.",
+    "sourceUrl": "https://parksaustralia.gov.au/kakadu/do/walks/ubirr/"
+  },
+  {
+    "id": "detour-093",
+    "name": "Yellow Water (Ngurrungurrudjba), Kakadu",
+    "lat": -12.89647,
+    "lng": 132.51759,
+    "region": "NT",
+    "category": "Wildlife",
+    "note": "The wetland at Ngurrungurrudjba, near Cooinda. Cruises are how you visit. Crocodiles live here; they are not the entertainment.",
+    "sourceUrl": "https://parksaustralia.gov.au/kakadu/do/tours/yellow-water-cruises/"
+  },
+  {
+    "id": "detour-094",
+    "name": "Mindil Beach, Darwin",
+    "lat": -12.44526,
+    "lng": 130.82987,
+    "region": "NT",
+    "category": "Culture",
+    "note": "Darwin's sunset beach. The markets take over in the dry season.",
+    "sourceUrl": "https://www.mindil.com.au/"
+  },
+  {
+    "id": "detour-095",
+    "name": "Questacon",
+    "lat": -35.2985,
+    "lng": 149.13139,
+    "region": "ACT",
+    "category": "Museum",
+    "note": "The national science centre. The buttons are meant to be pressed.",
+    "sourceUrl": "https://www.questacon.edu.au/"
+  },
+  {
+    "id": "detour-096",
+    "name": "Australian War Memorial",
+    "lat": -35.28096,
+    "lng": 149.14863,
+    "region": "ACT",
+    "category": "Museum",
+    "note": "The memorial at the end of Anzac Parade. Give it more time than you think.",
+    "sourceUrl": "https://www.awm.gov.au/"
+  },
+  {
+    "id": "detour-097",
+    "name": "National Arboretum Canberra",
+    "lat": -35.29,
+    "lng": 149.07,
+    "region": "ACT",
+    "category": "Culture",
+    "note": "A hundred forests on a Canberra ridge, with a view back to the lake.",
+    "sourceUrl": "https://www.nationalarboretum.act.gov.au/"
+  },
+  {
+    "id": "detour-098",
+    "name": "Tidbinbilla Nature Reserve",
+    "lat": -35.46306,
+    "lng": 148.91333,
+    "region": "ACT",
+    "category": "Wildlife",
+    "note": "A valley sanctuary on the edge of Namadgi. Start at the visitor centre and pick a short walk.",
+    "sourceUrl": "https://www.parks.act.gov.au/"
+  },
+  {
+    "id": "detour-099",
+    "name": "Mount Ainslie Lookout",
+    "lat": -35.26979,
+    "lng": 149.15868,
+    "region": "ACT",
+    "category": "Mountains",
+    "note": "The lookout over Canberra from the hill behind the War Memorial. A short uphill from the car park.",
+    "sourceUrl": "https://www.parks.act.gov.au/"
+  },
+  {
+    "id": "detour-100",
+    "name": "Australian National Botanic Gardens",
+    "lat": -35.27891,
+    "lng": 149.10907,
+    "region": "ACT",
+    "category": "Culture",
+    "note": "The national gardens on the slopes of Black Mountain. Walk the rainforest gully.",
+    "sourceUrl": "https://www.anbg.gov.au/"
+  }
+]
