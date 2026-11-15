@@ -95,10 +95,9 @@ button { cursor: pointer; }
   display: block;
   width: var(--wagon-w, 26px);
   height: var(--wagon-h, 13px);
-  left: var(--x0, 12px);
-  top: var(--y0, 8px);
+  left: var(--park-x, 12px);
+  top: var(--park-y, 8px);
   transform-origin: center;
-  animation: wagon-zigzag 17s linear infinite;
 }
 
 .trip-dot {
@@ -114,22 +113,18 @@ button { cursor: pointer; }
 .trip-dot:nth-child(1) {
   left: calc(var(--x1) + (var(--wagon-w) - 8px) / 2);
   top: calc(var(--y1) + (var(--wagon-h) - 8px) / 2);
-  animation: trip-dot-1 17s linear infinite;
 }
 .trip-dot:nth-child(2) {
   left: calc(var(--x2) + (var(--wagon-w) - 8px) / 2);
   top: calc(var(--y2) + (var(--wagon-h) - 8px) / 2);
-  animation: trip-dot-2 17s linear infinite;
 }
 .trip-dot:nth-child(3) {
   left: calc(var(--x3) + (var(--wagon-w) - 8px) / 2);
   top: calc(var(--y3) + (var(--wagon-h) - 8px) / 2);
-  animation: trip-dot-3 17s linear infinite;
 }
 .trip-dot:nth-child(4) {
   left: calc(var(--x4) + (var(--wagon-w) - 8px) / 2);
   top: calc(var(--y4) + (var(--wagon-h) - 8px) / 2);
-  animation: trip-dot-4 17s linear infinite;
 }
 
 .top-bar {
@@ -1195,40 +1190,6 @@ button { cursor: pointer; }
 @keyframes ink-route {
   from { background-position: 0 center; }
   to { background-position: 150px center; }
-}
-
-@keyframes wagon-zigzag {
-  0% { left: var(--x0); top: var(--y0); transform: scaleX(var(--f1)); }
-  14%, 17% { left: var(--x1); top: var(--y1); transform: scaleX(var(--f1)); }
-  21% { left: var(--x1); top: var(--y1); transform: scaleX(var(--f2)); }
-  35%, 38% { left: var(--x2); top: var(--y2); transform: scaleX(var(--f2)); }
-  42% { left: var(--x2); top: var(--y2); transform: scaleX(var(--f3)); }
-  56%, 59% { left: var(--x3); top: var(--y3); transform: scaleX(var(--f3)); }
-  63% { left: var(--x3); top: var(--y3); transform: scaleX(var(--f4)); }
-  77%, 80% { left: var(--x4); top: var(--y4); transform: scaleX(var(--f4)); }
-  84% { left: var(--x4); top: var(--y4); transform: scaleX(var(--f0)); }
-  100% { left: var(--x0); top: var(--y0); transform: scaleX(var(--f0)); }
-}
-
-@keyframes trip-dot-1 {
-  0%, 14% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
-  19%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
-  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
-}
-@keyframes trip-dot-2 {
-  0%, 35% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
-  40%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
-  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
-}
-@keyframes trip-dot-3 {
-  0%, 56% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
-  61%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
-  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
-}
-@keyframes trip-dot-4 {
-  0%, 77% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
-  82%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
-  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
