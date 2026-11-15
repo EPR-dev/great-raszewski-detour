@@ -23,7 +23,6 @@
     repeating-linear-gradient(90deg, rgba(90, 60, 30, 0.025) 0 1px, transparent 1px 5px);
   --route: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 24'><path d='M0 16C30 4 50 22 80 12s50-8 80 2' fill='none' stroke='%232a211c' stroke-width='1.6' stroke-dasharray='4 5' stroke-linecap='round'/></svg>");
   --compass: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'><circle cx='40' cy='40' r='34' fill='%23f3ead7' stroke='%23144e4a' stroke-width='3'/><circle cx='40' cy='40' r='23' fill='none' stroke='%239d3b32' stroke-width='1.4' stroke-dasharray='2 2'/><path d='M40 9l7 31-7-6-7 6z' fill='%23e2a51a'/><path d='M40 71l-7-31 7 6 7-6z' fill='%239d3b32'/><circle cx='40' cy='40' r='3.2' fill='%23144e4a'/></svg>");
-  --wagon: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 110'><rect x='18' y='48' width='168' height='36' rx='10' fill='%231f6e68'/><path d='M48 48 72 24h78l22 24' fill='%23144e4a'/><rect x='78' y='28' width='34' height='18' rx='3' fill='%23f4ecdc'/><rect x='118' y='28' width='32' height='18' rx='3' fill='%23f4ecdc'/><rect x='168' y='52' width='16' height='22' rx='3' fill='%239d3b32'/><circle cx='64' cy='86' r='14' fill='%232a211c'/><circle cx='64' cy='86' r='6' fill='%23e2a51a'/><circle cx='158' cy='86' r='14' fill='%232a211c'/><circle cx='158' cy='86' r='6' fill='%23e2a51a'/><rect x='86' y='14' width='46' height='8' rx='2' fill='%239d3b32'/></svg>");
   color: var(--ink);
   font-family: var(--body);
   background: var(--paper);
@@ -81,31 +80,56 @@ button { cursor: pointer; }
   border-bottom: 1px solid var(--line);
 }
 
-.top::before,
-.top::after { z-index: 0; }
-
-.top::before {
-  content: "";
+.header-trip {
   position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 1px;
-  height: 12px;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
   pointer-events: none;
-  background: var(--route) left center / 150px 12px repeat-x;
-  opacity: 0.45;
-  animation: ink-route 22s linear infinite;
 }
 
-.top::after {
-  content: "";
+.header-trip:not(.is-ready) { visibility: hidden; }
+
+.trip-wagon {
   position: absolute;
-  bottom: 1px;
-  width: 28px;
-  height: 14px;
-  pointer-events: none;
-  background: var(--wagon) center / contain no-repeat;
-  animation: wagon-trip 16s ease-in-out infinite;
+  display: block;
+  width: var(--wagon-w, 26px);
+  height: var(--wagon-h, 13px);
+  left: var(--x0, 12px);
+  top: var(--y0, 8px);
+  transform-origin: center;
+  animation: wagon-zigzag 17s linear infinite;
+}
+
+.trip-dot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--stamp);
+  box-shadow: 0 0 0 1.5px #f7f1e4, 0 0 0 2.5px var(--stamp);
+  opacity: 0;
+}
+
+.trip-dot:nth-child(1) {
+  left: calc(var(--x1) + (var(--wagon-w) - 8px) / 2);
+  top: calc(var(--y1) + (var(--wagon-h) - 8px) / 2);
+  animation: trip-dot-1 17s linear infinite;
+}
+.trip-dot:nth-child(2) {
+  left: calc(var(--x2) + (var(--wagon-w) - 8px) / 2);
+  top: calc(var(--y2) + (var(--wagon-h) - 8px) / 2);
+  animation: trip-dot-2 17s linear infinite;
+}
+.trip-dot:nth-child(3) {
+  left: calc(var(--x3) + (var(--wagon-w) - 8px) / 2);
+  top: calc(var(--y3) + (var(--wagon-h) - 8px) / 2);
+  animation: trip-dot-3 17s linear infinite;
+}
+.trip-dot:nth-child(4) {
+  left: calc(var(--x4) + (var(--wagon-w) - 8px) / 2);
+  top: calc(var(--y4) + (var(--wagon-h) - 8px) / 2);
+  animation: trip-dot-4 17s linear infinite;
 }
 
 .top-bar {
@@ -1173,25 +1197,49 @@ button { cursor: pointer; }
   to { background-position: 150px center; }
 }
 
-@keyframes wagon-trip {
-  0% { left: -36px; transform: translateY(0); }
-  18% { left: 18%; transform: translateY(0); }
-  22% { left: 20%; transform: translateY(-2px); }
-  26% { left: 22%; transform: translateY(0); }
-  48% { left: 46%; transform: translateY(0); }
-  52% { left: 48%; transform: translateY(-2px); }
-  56% { left: 50%; transform: translateY(0); }
-  78% { left: 72%; transform: translateY(0); }
-  82% { left: 74%; transform: translateY(-2px); }
-  86% { left: 76%; transform: translateY(0); }
-  100% { left: calc(100% + 8px); transform: translateY(0); }
+@keyframes wagon-zigzag {
+  0% { left: var(--x0); top: var(--y0); transform: scaleX(var(--f1)); }
+  14%, 17% { left: var(--x1); top: var(--y1); transform: scaleX(var(--f1)); }
+  21% { left: var(--x1); top: var(--y1); transform: scaleX(var(--f2)); }
+  35%, 38% { left: var(--x2); top: var(--y2); transform: scaleX(var(--f2)); }
+  42% { left: var(--x2); top: var(--y2); transform: scaleX(var(--f3)); }
+  56%, 59% { left: var(--x3); top: var(--y3); transform: scaleX(var(--f3)); }
+  63% { left: var(--x3); top: var(--y3); transform: scaleX(var(--f4)); }
+  77%, 80% { left: var(--x4); top: var(--y4); transform: scaleX(var(--f4)); }
+  84% { left: var(--x4); top: var(--y4); transform: scaleX(var(--f0)); }
+  100% { left: var(--x0); top: var(--y0); transform: scaleX(var(--f0)); }
+}
+
+@keyframes trip-dot-1 {
+  0%, 14% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
+  19%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
+  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
+}
+@keyframes trip-dot-2 {
+  0%, 35% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
+  40%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
+  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
+}
+@keyframes trip-dot-3 {
+  0%, 56% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
+  61%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
+  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
+}
+@keyframes trip-dot-4 {
+  0%, 77% { opacity: 0; transform: scale(0.25) rotate(-16deg); }
+  82%, 92% { opacity: 1; transform: scale(1) rotate(-8deg); }
+  98%, 100% { opacity: 0; transform: scale(0.25) rotate(-8deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .been-stamp.is-fresh { animation: none; }
   .pin-want { transition: none; }
-  .top::before,
-  .top::after,
   .action-bar::before { animation: none; }
-  .top::after { left: 12px; transform: none; }
+  .trip-wagon {
+    animation: none;
+    left: var(--park-x, 12px);
+    top: var(--park-y, 8px);
+    transform: none;
+  }
+  .trip-dot { animation: none; opacity: 0; }
 }

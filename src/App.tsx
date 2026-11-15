@@ -6,6 +6,7 @@ import { AddDetour } from "./components/AddDetour";
 import { AuthScreen, JoinScreen } from "./components/AuthScreens";
 import { CategoryLegend } from "./components/CategoryLegend";
 import { EmptyBeen } from "./components/EmptyState";
+import { HeaderTrip } from "./components/HeaderTrip";
 import { MapView } from "./components/MapView";
 import { PlaceList } from "./components/PlaceList";
 import { PlacePanel } from "./components/PlacePanel";
@@ -313,6 +314,7 @@ function MapShell({
       ) : null}
       {notice ? <p className="demo-banner">{notice}</p> : null}
       <header className="top">
+        <HeaderTrip />
         <div className="top-bar">
           <div className="brand">
             <h1 className="motel-sign">
